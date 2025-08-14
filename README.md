@@ -1,6 +1,6 @@
 > *"Imagine greater"*
 
-I bring deep technical expertise and product-first thinking to every project — from fast-moving startups to complex enterprise systems. Whether you're shipping your first MVP or optimizing at scale, I can help you build with confidence.
+I bring deep technical expertise and product-first thinking to every project — from fast-moving startups to complex enterprise systems. Whether you're shipping your first MVP or optimizing at scale, I can help you build with confidence. Let’s talk
 
 ## About me
 ```typescript
