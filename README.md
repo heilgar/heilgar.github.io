@@ -21,8 +21,8 @@ _I use Vim, btw._
 ## 📬 Let's Connect
 
 <!-- - 💼 Upwork: [Your Upwork Profile](#) -->
-- 🔗 LinkedIn: [linkedin.com/in/helje/](https://www.linkedin.com/in/helje/)
-
+- 🔗 LinkedIn: [https://www.linkedin.com/in/oleh-hrebeniuk/](https://www.linkedin.com/in/oleh-hrebeniuk/)
+  
 <!--
 **heilgar/heilgar** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
