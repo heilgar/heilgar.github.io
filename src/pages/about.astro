@@ -1,9 +1,7 @@
 ---
 import Breadcrumbs from '@/components/Breadcrumbs.astro'
 import PageHead from '@/components/PageHead.astro'
-import Link from '@/components/Link.astro'
 import Layout from '@/layouts/Layout.astro'
-import { Icon } from 'astro-icon/components'
 import { SITE } from '@/consts'
 
 // Person Schema for About page
@@ -17,10 +15,10 @@ const personSchema = {
 ---
 <Layout class="max-w-3xl">
   <PageHead slot="head" title="About" />
-  
+
   <!-- Person Schema for About page SEO -->
   <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-  
+
   <Breadcrumbs items={[{ label: 'About', icon: 'lucide:user' }]} />
 
   <section class="flex flex-col gap-8">
@@ -29,7 +27,7 @@ const personSchema = {
       <div>
         <h1 class="text-3xl md:text-4xl font-bold">About</h1>
         <p class="text-sm text-muted-foreground font-mono mt-1">
-          Learn more about this blog
+          Engineer, Architect, Advisor
         </p>
       </div>
     </div>
@@ -37,13 +35,32 @@ const personSchema = {
     <!-- Main Content -->
     <div class="prose prose-sm dark:prose-invert max-w-none space-y-6">
       <p class="text-muted-foreground leading-relaxed">
-        Welcome to <strong class="text-primary">{SITE.title}</strong>! 
-        This is a placeholder about page. Customize this content to tell your visitors about yourself, your blog, or your interests.
+        I bring deep technical expertise and product-first thinking to every project — from fast-moving startups to complex enterprise systems. Whether you're shipping your first MVP or optimizing at scale, I can help you build with confidence.
       </p>
 
+      <h2 class="text-xl font-semibold text-foreground">What I do</h2>
+      <ul class="text-muted-foreground leading-relaxed space-y-2">
+        <li><strong class="text-foreground">Full-Stack Development</strong> — TypeScript, React, Next.js, Node.js, Go, Python, PHP</li>
+        <li><strong class="text-foreground">AI & LLM Integration</strong> — building conversational interfaces and AI-powered products</li>
+        <li><strong class="text-foreground">Business Workflow Automation</strong> — turning manual processes into reliable systems</li>
+        <li><strong class="text-foreground">Scalable System Architecture</strong> — designing systems that grow with the business</li>
+      </ul>
+
+      <h2 class="text-xl font-semibold text-foreground">Background</h2>
       <p class="text-muted-foreground leading-relaxed">
-        You can edit this page by modifying <code class="text-sm bg-muted px-1.5 py-0.5 rounded">src/pages/about.astro</code>.
+        10+ years across startups and enterprise systems. I've worked with teams building SaaS products, B2B platforms, and developer tools. I care about shipping things that work, not just things that compile.
       </p>
+      <p class="text-muted-foreground leading-relaxed">
+        I use Vim, btw.
+      </p>
+
+      <h2 class="text-xl font-semibold text-foreground">Connect</h2>
+      <ul class="text-muted-foreground leading-relaxed space-y-1">
+        <li><a href="https://www.linkedin.com/in/oleh-hrebeniuk/" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">LinkedIn</a></li>
+        <li><a href="https://github.com/heilgar" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">GitHub</a></li>
+        <li><a href="https://x.com/go_horizon_ua" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">X / Twitter</a></li>
+        <li><a href="mailto:duckies-regulus.2h@icloud.com" class="text-primary hover:underline">Email</a></li>
+      </ul>
     </div>
   </section>
 </Layout>
