@@ -63,6 +63,7 @@ type ExperienceItem = {
   current?: boolean
   icon: string
   key: string
+  link?: string
 }
 
 const experience: ExperienceItem[] = [
@@ -72,35 +73,39 @@ const experience: ExperienceItem[] = [
     period: 'Oct 2025 - Current',
     current: true,
     icon: 'lucide:rocket',
-    key: 'Engineering and product support for Revcast in a studio capacity • Working on an early-stage stealth product'
+    key: 'Studio-based product engineering and early-stage product development',
   },
   {
     role: 'Software Engineer',
     company: 'Revcast',
     period: 'Oct 2024 - Oct 2025',
     icon: 'lucide:brain',
-    key: 'Architected AI agent orchestration system with unified chat interface • Replaced costly no-code SaaS with in-house ETL, cutting overhead by 50-60% • Rebuilt data layer from JS to Python, reducing dev time by 40%'
+    key: 'AI agent orchestration, in-house ETL pipelines, forecasting engines',
+    link: 'https://revcast.com',
   },
   {
     role: 'Senior Software Engineer',
     company: 'Levi9 Technology Services',
     period: 'May 2019 - Oct 2024',
     icon: 'lucide:building',
-    key: 'Architected no-code platform shortening dev cycles by 30% • Enforced OWASP ASVS & GDPR compliance • Deployed observability stack cutting incident resolution by 40%'
+    key: 'No-code platform architecture, observability, security compliance',
+    link: 'https://minggo.io',
   },
   {
     role: 'Software Engineer',
     company: 'Levi9 Technology Services',
     period: 'Apr 2018 - May 2019',
     icon: 'lucide:server',
-    key: 'Optimized query performance reducing DB response time by 35% • Built warehouse automation software and waste-reduction algorithms'
+    key: 'Query optimization, warehouse automation, print operations',
+    link: 'https://probo.nl',
   },
   {
     role: 'Junior Software Engineer',
     company: 'Levi9 Technology Services',
     period: 'Aug 2016 - Apr 2018',
     icon: 'lucide:code',
-    key: 'Implemented ElasticSearch cluster with Redshift for 2TB+ dataset • Container migration with Docker and Kubernetes'
+    key: 'Search infrastructure, containerization, data pipelines',
+    link: 'https://improvedigital.com',
   },
 ]
 ---
@@ -200,7 +205,7 @@ const experience: ExperienceItem[] = [
               <div class="mb-1">
                 <h3 class="font-semibold text-lg leading-tight">{exp.role}</h3>
                 <p class="text-sm text-muted-foreground">
-                  {exp.company} · {exp.period}
+                  {exp.company}{exp.link && <> · <a href={exp.link} target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">{new URL(exp.link).hostname}</a></>} · {exp.period}
                 </p>
               </div>
               <p class="text-sm text-muted-foreground/90 leading-relaxed mt-2">
