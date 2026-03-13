@@ -28,6 +28,8 @@ jobs:
         run: npm ci
       - name: Build Astro
         run: npm run build
+        env:
+          SITE_URL: https://heilgar.github.io
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,59 @@
+---
+title: 'How Generative AI is Quietly Rewiring UX and Development: A Ramble from the Trenches'
+description: 'The web is becoming conversational — less about navigating dashboards, more about simply asking for what you need.'
+date: 2025-09-09
+authors: ['oleg']
+tags: ['ai', 'ux', 'development']
+image: ./cover_click_to_chat.webp
+draft: false
+---
+
+The dust from the generative AI explosion is settling, and something fundamental is shifting: we may be witnessing the end of the interface as we've known it — an entire digital world built on clicks, taps, and predefined menus.
+
+For decades, the digital world has been built on clicks, taps, and predefined menus. Now, the web is becoming conversational — less about navigating dashboards, more about simply asking for what you need. This isn't a technical deep dive. No architectures, no token counting — just my thoughts on this shift. Are your products starting to feel more like a conversation? Do they invite you to chat or even talk?
+
+## From Clicks to Conversation: The New Interface Contract
+
+Let's focus on users first, where the impact of generative AI is most obvious. Imagine you're sitting in front of a wall of dashboards, charts, and spreadsheets — numbers ticking in real time, colors flashing to show growth or decline. But even then, you're stuck staring at charts, trying to piece together the story behind the numbers. It's better than the old days, but it's not a game-changer.
+
+At our startup, we had a lightbulb moment — sarcastic as it sounds — that flipped this on its head: what if users could just talk to their data? We're now experimenting with a chat-based interface, where you can ask, "How's Team A doing this month?", "Will we hit our targets at this pace?" or "What sources are driving the most profit?" The AI doesn't just spit out numbers; it crafts a clear narrative, pairs it with a focused visualization tailored to the question, and can even offer actionable suggestions. The goal is to move from a "pull" model, where the user has to work to find information, to a "push" model, where insights are delivered. It's like having a sharp data analyst by your side, 24/7.
+
+That experience sparked my own "lightbulb" moment. It became clear that more and more products will adopt chat-like interfaces in one way or another, and I started to think about what the average interface will look like in 3, 5, or 10 years. While looking for inspiration, I found a compelling implementation that really captures this idea — powered (but not sponsored) by the Vercel AI SDK: [Natural Language Postgres](https://natural-language-postgres.vercel.app/). I intentionally picked this Natural Language Postgres demo since it's close to what we are working on.
+
+Picture a CRM where you say, "Show me Q3 churn risks for European clients," and get a concise, clear report without clicking through endless menus. This isn't a hypothetical. We're seeing this trend solidify across the industry. Look at how Perplexity has completely reimagined search as a direct conversation. It's the same trend driving integrations of models like Claude directly into browsers like Chrome, turning the entire web into a conversational space. Are tools like these already making your team's work smoother, or do they still feel like a cool idea for the future?
+
+## Voice Interfaces: A Game-Changer
+
+Here's a bigger idea: Are these changes making us lazier or more productive? Voice control used to feel like a gimmick, like telling your phone to set a timer. Now, I find myself speaking queries instead of typing, and it feels natural. This conversational shift finds its most natural expression in voice. For years, Speech-to-Text (STT) was getting better at hearing our words, but the "brain" it was connected to couldn't really understand them.
+
+Suddenly, the conversation is no longer a one-way street of commands. The STT captures our query, but now the AI 'brain' — be it a massive public model or one finely tuned to your specific product — can grasp the true intent and nuance behind the words. It can reason, access information, and formulate a genuinely intelligent response. Then, increasingly sophisticated Text-to-Speech (TTS) delivers that response in a tone that is becoming remarkably human. It's the combination of these technologies that creates a true conversational loop, finally fulfilling the promise of Marvel's J.A.R.V.I.S.
+
+But the most profound benefit here isn't just convenience — it's accessibility. We're finally moving beyond interfaces that demand our hands and eyes. This helps users with physical impairments, but it also helps anyone who is situationally hands-free: the parent holding a child, the driver with eyes on the road, the cook in the middle of a recipe, you name it.
+
+Of course, let's be realistic. We're still some way from having a truly natural conversational agent. The biggest piece of friction right now is latency. That noticeable pause while waiting for the AI to generate a response breaks the natural rhythm of a conversation. For an agent to feel truly human, its responses need to be near-instantaneous.
+
+## Development: A New Layer of Complexity and Opportunity
+
+For engineers like me, generative AI is reshaping how we build. My old workflow was a simple loop: pull data, process it, and display it — obviously oversimplified. It was predictable and linear. Now, AI adds a new layer — both exciting and challenging.
+
+On the front end, I believe many products could eventually become fully chat-based. While I agree it's convenient to just ask for things, I've realized you often still need traditional components like charts and forms to represent the information. For me, building a solid component once is better than spending tokens to generate it repeatedly, and it makes development and testing much simpler. It seems more practical to have a standard UI and use the LLM to make it smarter.
+
+On the backend, things get even more intricate. This new layer has expanded traditional backend development for SaaS and B2B products to include prompt engineering, routing for different AI tasks, context optimization, and more. It's a new kind of complexity: testing for edge cases where the AI might misinterpret data, balancing performance with cost (those tokens add up!), and ensuring the system stays reliable.
+
+So, to all the developers out there, it looks like we're not doomed yet. All this new complexity means someone still needs to build, test, and support it.
+
+Anyway, that's the view from my keyboard today. One thing feels certain, though: the genie is out of the bottle on this one. We're not going back to a world of static menus. The only question is what we'll build next.
+
+Speaking of which, I'd love to know:
+
+- Do your users still want dashboards and screens, or just answers?
+- Is your product shifting toward chat, voice, or agents?
+- If voice assistants actually work this time, how would that change the way you build?
+
+Maybe the future of the web isn't something we click through.
+
+Maybe it's something we chat with.
+
+---
+
+*Originally published on [LinkedIn](https://www.linkedin.com/pulse/how-generative-ai-quietly-rewiring-ux-development-ramble-hrebeniuk-tj4te/) and [Medium](https://medium.com/design-bootcamp/how-generative-ai-is-quietly-rewiring-ux-and-development-a-ramble-from-the-trenches-5a08e8051f0f).*
