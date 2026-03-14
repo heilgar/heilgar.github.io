@@ -1,0 +1,61 @@
+---
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import Link from '@/components/Link.astro'
+import PageHead from '@/components/PageHead.astro'
+import Layout from '@/layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+import { getCollection } from 'astro:content'
+import { Image } from 'astro:assets'
+
+const projects = await getCollection('projects')
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Projects" />
+  <Breadcrumbs items={[{ label: 'Projects', icon: 'lucide:folder-open' }]} />
+
+  <section class="flex flex-col gap-8">
+    <div class="flex flex-col gap-4">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold">Projects</h1>
+        <p class="text-sm text-muted-foreground font-mono mt-1">
+          Open source work and side projects
+        </p>
+      </div>
+    </div>
+
+    <div class="grid gap-4">
+      {projects.map((project) => (
+        <Link
+          href={project.data.link}
+          external
+          class="group block rounded-lg border border-border/50 bg-card p-4 hover:border-primary/30 hover:bg-muted/30 transition-all duration-200"
+        >
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:bg-primary/20 dark:group-hover:bg-primary/30 transition-colors">
+              <Icon name="lucide:github" class="size-5 text-primary" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2">
+                <h2 class="font-semibold text-foreground group-hover:text-primary transition-colors">
+                  {project.data.name}
+                </h2>
+                <Icon name="lucide:external-link" class="size-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
+              <p class="text-sm text-muted-foreground mt-1 leading-relaxed">
+                {project.data.description}
+              </p>
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                {project.data.tags.map((tag) => (
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-muted text-muted-foreground">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </section>
+</Layout>
