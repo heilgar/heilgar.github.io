@@ -67,7 +67,28 @@ export default defineConfig({
     }),
     mdx(),
     react(),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        !page.includes('/newsletter/') &&
+        !page.includes('/api/') &&
+        !page.includes('/og/'),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      serialize(item: any): any {
+        if (item.url === 'https://heilgar.github.io/') {
+          return { ...item, changefreq: 'weekly', priority: 1.0, lastmod: new Date().toISOString() }
+        }
+        if (/\/blog\/[^/]+\/$/.test(item.url)) {
+          return { ...item, changefreq: 'monthly', priority: 0.8 }
+        }
+        if (item.url.includes('/blog/') || item.url.includes('/projects/')) {
+          return { ...item, changefreq: 'weekly', priority: 0.7 }
+        }
+        if (item.url.includes('/tags/') || item.url.includes('/authors/')) {
+          return { ...item, changefreq: 'weekly', priority: 0.5 }
+        }
+        return { ...item, changefreq: 'monthly', priority: 0.6 }
+      },
+    }),
     icon(),
   ],
   vite: {
