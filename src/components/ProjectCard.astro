@@ -35,9 +35,14 @@ const { project } = Astro.props
       )
     }
     <div class="grow">
-      <h3 class="mb-1 text-lg font-medium">
-        {project.data.name}
-      </h3>
+      <div class="mb-1 flex items-center gap-2">
+        <h3 class="text-lg font-medium">
+          {project.data.name}
+        </h3>
+        {project.data.wip && (
+          <Badge variant="outline" className="text-xs text-yellow-600 border-yellow-600/30">In Development</Badge>
+        )}
+      </div>
       <p class="text-muted-foreground mb-2 text-sm">
         {project.data.description}
       </p>
