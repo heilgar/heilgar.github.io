@@ -24,6 +24,17 @@ const { class: className, hideFloatingSidebar = false } = Astro.props
 >
   <Head>
     <slot name="head" />
+
+<!-- Google tag (gtag.js) -->
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-182N6335GG"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-182N6335GG');
+</script>
+
   </Head>
   <body class="flex h-fit min-h-screen flex-col gap-y-6 font-sans" transition:persist>
     <!-- Skip to main content link for accessibility -->
