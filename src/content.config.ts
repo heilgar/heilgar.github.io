@@ -32,6 +32,17 @@ const authors = defineCollection({
   }),
 })
 
+const archive = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/archive' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).optional(),
+    lang: z.string().default('ru'),
+  }),
+})
+
 const projects = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/projects' }),
   schema: ({ image }) =>
@@ -47,4 +58,4 @@ const projects = defineCollection({
     }),
 })
 
-export const collections = { blog, authors, projects }
+export const collections = { blog, authors, projects, archive }

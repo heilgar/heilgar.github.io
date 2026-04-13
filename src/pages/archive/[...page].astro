@@ -1,0 +1,70 @@
+---
+import ArchiveCard from '@/components/ArchiveCard.astro'
+import Breadcrumbs from '@/components/Breadcrumbs.astro'
+import PageHead from '@/components/PageHead.astro'
+import PaginationComponent from '@/components/ui/pagination'
+import Layout from '@/layouts/Layout.astro'
+import { getAllArchivePosts, groupArchivePostsByYear } from '@/lib/data-utils'
+import type { PaginateFunction } from 'astro'
+
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: PaginateFunction
+}) {
+  const allPosts = await getAllArchivePosts()
+  return paginate(allPosts, { pageSize: 20 })
+}
+
+const { page } = Astro.props
+
+const postsByYear = groupArchivePostsByYear(page.data)
+const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a))
+---
+
+<Layout class="max-w-3xl">
+  <PageHead slot="head" title="Archive" description="Archived posts from thewebland.net" />
+  <Breadcrumbs
+    items={[
+      { label: 'Archive', href: '/archive', icon: 'lucide:archive' },
+      ...(page.currentPage > 1
+        ? [{ label: `Page ${page.currentPage}`, icon: 'lucide:book-copy' }]
+        : []),
+    ]}
+  />
+
+  <div class="mb-6">
+    <h1 class="text-2xl font-bold mb-2">Archive</h1>
+    <p class="text-muted-foreground text-sm">
+      Posts from thewebland.net (2014–2022). Preserved for reference.
+    </p>
+  </div>
+
+  <div class="flex min-h-[calc(100vh-18rem)] flex-col">
+    {
+      years.map((year) => (
+        <section class="flex flex-col">
+          <div class="text-muted-foreground/60 text-xs font-medium uppercase tracking-wider mb-2.5 mt-6 first:mt-0">
+            {year}
+          </div>
+          <ul class="flex flex-col gap-2">
+            {postsByYear[year].map((post) => (
+              <li>
+                <ArchiveCard entry={post} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))
+    }
+  </div>
+
+  <div class="mt-6">
+    <PaginationComponent
+      currentPage={page.currentPage}
+      totalPages={page.lastPage}
+      baseUrl="/archive/"
+      client:idle
+    />
+  </div>
+</Layout>

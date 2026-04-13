@@ -1,0 +1,61 @@
+---
+import { formatDate } from '@/lib/utils'
+import { Icon } from 'astro-icon/components'
+import type { CollectionEntry } from 'astro:content'
+import Link from './Link.astro'
+
+interface Props {
+  entry: CollectionEntry<'archive'>
+}
+
+const { entry } = Astro.props
+const formattedDate = formatDate(entry.data.date)
+---
+
+<Link
+  href={`/${entry.id}`}
+  class="group block py-4 transition-all duration-200 hover:bg-muted/30 -mx-2 px-2 rounded-md"
+>
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1 min-w-0 space-y-1">
+      <div class="flex items-baseline gap-2.5">
+        <h3 class="text-base font-semibold leading-snug group-hover:text-foreground transition-colors">
+          {entry.data.title}
+        </h3>
+        <span class="text-muted-foreground/60 text-xs font-normal whitespace-nowrap shrink-0">
+          {formattedDate}
+        </span>
+      </div>
+      {entry.data.description && (
+        <p class="text-muted-foreground text-sm leading-snug line-clamp-1">
+          {entry.data.description}
+        </p>
+      )}
+      <div class="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-xs text-muted-foreground/80">
+        {entry.data.lang && (
+          <span class="flex items-center gap-1">
+            <Icon name="lucide:globe" class="size-3 text-primary/70" />
+            {entry.data.lang}
+          </span>
+        )}
+        {entry.data.tags && entry.data.tags.length > 0 && (
+          <>
+            <span class="text-muted-foreground/40">&middot;</span>
+            <div class="flex flex-wrap items-center gap-1">
+              {entry.data.tags.slice(0, 3).map((tag) => (
+                <span class="text-[10px] px-1.5 py-0.5 rounded font-medium text-muted-foreground/70">
+                  {tag}
+                </span>
+              ))}
+              {entry.data.tags.length > 3 && (
+                <span class="text-muted-foreground/50 text-[10px]">
+                  +{entry.data.tags.length - 3}
+                </span>
+              )}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</Link>

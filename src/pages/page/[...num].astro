@@ -1,0 +1,21 @@
+---
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths: GetStaticPaths = () => {
+  return Array.from({ length: 15 }, (_, i) => ({
+    params: { num: String(i + 2) },
+  }))
+}
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0;url=/archive" />
+    <link rel="canonical" href="/archive" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <p>Redirecting to <a href="/archive">archive</a>…</p>
+  </body>
+</html>

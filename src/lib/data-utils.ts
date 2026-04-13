@@ -21,6 +21,24 @@ export async function getAllPostsAndSubposts(): Promise<
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 }
 
+export async function getAllArchivePosts(): Promise<CollectionEntry<'archive'>[]> {
+  const posts = await getCollection('archive')
+  return posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+}
+
+export function groupArchivePostsByYear(
+  posts: CollectionEntry<'archive'>[],
+): Record<string, CollectionEntry<'archive'>[]> {
+  return posts.reduce(
+    (acc: Record<string, CollectionEntry<'archive'>[]>, post) => {
+      const year = post.data.date.getFullYear().toString()
+      ;(acc[year] ??= []).push(post)
+      return acc
+    },
+    {},
+  )
+}
+
 export async function getAllProjects(): Promise<CollectionEntry<'projects'>[]> {
   const projects = await getCollection('projects')
   return projects.sort((a, b) => {
