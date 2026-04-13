@@ -19,7 +19,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  site: 'https://heilgar.github.io',
+  site: 'https://thewebland.net',
   // Static output - API routes are handled by Cloudflare Pages Functions in /functions folder
   integrations: [
     expressiveCode({
@@ -74,7 +74,7 @@ export default defineConfig({
         !page.includes('/og/'),
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       serialize(item: any): any {
-        if (item.url === 'https://heilgar.github.io/') {
+        if (item.url === 'https://thewebland.net/') {
           return { ...item, changefreq: 'weekly', priority: 1.0, lastmod: new Date().toISOString() }
         }
         if (/\/blog\/[^/]+\/$/.test(item.url)) {

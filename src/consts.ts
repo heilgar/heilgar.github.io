@@ -4,7 +4,7 @@ export const SITE: Site = {
     title: 'Oleh Hrebeniuk',
     description:
         'Engineering, architecture, and thoughts on building software.',
-    href: 'https://heilgar.github.io',
+    href: 'https://thewebland.net',
     author: 'oleg',
     locale: 'en-US',
     featuredPostCount: 2,
