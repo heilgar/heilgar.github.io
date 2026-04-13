@@ -59,7 +59,7 @@ const { Content } = await render(post)
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="flex flex-wrap justify-center gap-2">
           {post.data.tags.map((tag) => (
-            <span class={badgeVariants({ variant: 'secondary' })}>
+            <span class={badgeVariants({ variant: 'muted' })}>
               <Icon name="lucide:hash" class="size-3" />
               {tag}
             </span>
