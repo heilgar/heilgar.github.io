@@ -95,8 +95,5 @@ Here are some ideas to get you started:
 <!---->
 <!-- [![trophy](https://github-profile-trophy.vercel.app/?username=heilgar&theme=onedark)](https://github.com/ryo-ma/github-profile-trophy) -->
 <!---->
-
-
-
 <!-- </div> -->
 
